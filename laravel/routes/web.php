@@ -12,5 +12,5 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{any}', 'App\Http\Controllers\SplController@index')->where('any', '.*');
+Route::match(['get', 'post'],'/', ['App\Http\Controllers\MailController', 'sendMail']);
 
