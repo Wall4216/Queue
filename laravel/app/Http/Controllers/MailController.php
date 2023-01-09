@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\LongJob;
 use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -12,9 +13,7 @@ class MailController extends Controller
     {
         if ($request->method() === 'POST')
         {
-            sleep(5);
-            Mail::to('test@test.ru')
-                ->send((new TestMail())->from('ilnazamirha@mail.ru'));
+            LongJob::dispatch()->onQueue('email_queue');
         }
         return view('testmail');
     }

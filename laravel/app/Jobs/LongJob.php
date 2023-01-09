@@ -23,7 +23,7 @@ class LongJob implements ShouldQueue
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
